@@ -112,14 +112,17 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
       return streamHandler(
         bundle.bundle()
           .on('error', function(err) {
-            log(chalk.red('✖ ') + (err.stack || String(err)));
+            log(chalk.red(format('✖ Bundling failed for %s %s',
+              chalk.magenta(file),
+              chalk.gray('(' + String(err) + ')')
+            )));
+            this.emit('end');
           })
           .pipe(source(file))
           .pipe(buffer())
           .on('end', function() {
-            if (!options.watch) {
-              bundle.close();
-            } else if (watchMsg) {
+            if (!options.watch) bundle.close();
+            else if (watchMsg) {
               log(watchMsg);
               watchMsg = false;
             }
