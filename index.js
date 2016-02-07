@@ -50,6 +50,7 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
    */
   glob(globPattern, {cwd: options.cwd}, function(err, files) {
     if (err) return log(err);
+    if (files.length <= 0) return done();
     eventStream.merge(files.map(function(file) {
       var bundler = new Bundler(file);
       return bundler.outputBundle();
