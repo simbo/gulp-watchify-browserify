@@ -13,7 +13,6 @@ deploy:
     repo: simbo/gulp-watchify-browserify
 after_script:
 - npm run cover
-- npm run codecov
 sudo: false
 env:
   global:
