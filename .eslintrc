@@ -1,0 +1,5 @@
+{
+  "extends": "simbo/default/node",
+  "rules": {
+  }
+}
