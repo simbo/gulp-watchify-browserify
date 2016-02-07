@@ -112,7 +112,7 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
       return streamHandler(
         bundle.bundle()
           .on('error', function(err) {
-            throw err;
+            log(chalk.red('✖ ') + (err.stack || String(err)));
           })
           .pipe(source(file))
           .pipe(buffer())
