@@ -1,3 +1,3 @@
 'use strict';
 
-console.log('foo');
+console.log('foo'); // eslint-disable-line no-console
