@@ -12,7 +12,8 @@
     "bundle"
   ],
   "scripts": {
-    "cover": "codecov",
+    "cover": "istanbul cover ./node_modules/.bin/_mocha -- -R spec",
+    "codecov": "codecov",
     "lint": "eslint ./index.js",
     "mocha": "mocha -R spec",
     "test": "echo \"Error: no test specified\" && exit 1",
