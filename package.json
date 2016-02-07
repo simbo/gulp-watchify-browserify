@@ -15,8 +15,7 @@
     "cover": "istanbul cover ./node_modules/.bin/_mocha -- -R spec",
     "codecov": "codecov",
     "lint": "eslint ./index.js",
-    "mocha": "mocha -R spec",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -R spec",
     "watch": "mocha -R spec -w"
   },
   "repository": {
@@ -51,6 +50,8 @@
     "eslint": "^1.10.3",
     "eslint-config-simbo": "^0.2.0",
     "istanbul": "^0.4.2",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "stream-assert": "^2.0.3",
+    "touch": "^1.0.0"
   }
 }

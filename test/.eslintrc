@@ -1,0 +1,9 @@
+{
+  "extends": "simbo/default/node",
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "require-jsdoc": 0
+  }
+}
