@@ -28,7 +28,6 @@ gulp.task('browserify', function(done) {
     // set cwd to manipulate relative output path
     cwd: src,
     browserify: {
-      insertGlobals: false,
       paths: [
         path.join(src, 'modules'),
         './node_modules'
