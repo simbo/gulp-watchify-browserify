@@ -1,0 +1,55 @@
+{
+  "name": "gulp-watchify-browserify",
+  "version": "0.1.0",
+  "description": "A gulp plugin for watching and bundling javascripts using watchify and browserify.",
+  "author": "Simon Lepel <simbo@simbo.de> (http://simbo.ninja)",
+  "main": "index.js",
+  "keywords": [
+    "browserify",
+    "watchify",
+    "gulpplugin",
+    "gulp",
+    "bundle"
+  ],
+  "scripts": {
+    "cover": "codecov",
+    "lint": "eslint ./index.js",
+    "mocha": "mocha -R spec",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "mocha -R spec -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simbo/gulp-watchify-browserify.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simbo/gulp-watchify-browserify/issues"
+  },
+  "homepage": "https://github.com/simbo/gulp-watchify-browserify#readme",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "event-stream": "^3.3.2",
+    "glob": "^6.0.4",
+    "gulp-util": "^3.0.7",
+    "merge": "^1.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "devDependencies": {
+    "codecov": "^1.0.1",
+    "eslint": "^1.10.3",
+    "eslint-config-simbo": "^0.2.0",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5"
+  }
+}
