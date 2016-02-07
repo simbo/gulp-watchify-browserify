@@ -41,7 +41,7 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
       ignoreWatch: ['**/node_modules/**'],
       poll: true
     }
-  }, options);
+  }, options || {});
 
   /**
    * glob bundle entries using defined pattern,
