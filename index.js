@@ -32,6 +32,7 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
     watch: process.env.NODE_ENV === 'development',
     cwd: process.cwd(),
     browserify: {
+      insertGlobals: false,
       cache: {},
       packageCache: {}
     },
