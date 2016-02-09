@@ -1,6 +1,6 @@
 {
   "name": "gulp-watchify-browserify",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A gulp plugin for watching and bundling javascripts using watchify and browserify.",
   "author": "Simon Lepel <simbo@simbo.de> (http://simbo.ninja)",
   "main": "index.js",
