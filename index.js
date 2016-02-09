@@ -3,8 +3,8 @@
 var path = require('path'),
     util = require('util');
 
-var browserify = require('browserify'),
-    eventStream = require('event-stream'),
+var async = require('async'),
+    browserify = require('browserify'),
     glob = require('glob'),
     gUtil = require('gulp-util'),
     merge = require('merge'),
@@ -52,10 +52,10 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
   glob(globPattern, {cwd: options.cwd}, function(err, files) {
     if (err) return log(err);
     if (files.length <= 0) return done();
-    eventStream.merge(files.map(function(file) {
-      var bundler = new Bundler(file);
-      return bundler.outputBundle();
-    })).on('end', function() {
+    async.each(files, function(file, cb) {
+      (new Bundler(file, cb)).outputBundle();
+    }, function(err) {
+      if (err) throw err;
       if (options.watch) return;
       done();
     });
@@ -63,10 +63,11 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
 
   /**
    * create a browserify bundler, wrapped in a watchify watcher
-   * @param  {String} file  entry file
+   * @param  {String}    file  entry file
+   * @param  {Function}  cb    callback
    * @return {undefined}
    */
-  function Bundler(file) {
+  function Bundler(file, cb) {
 
     var bundler = this, bundle,
         watchMsg = format('Watching bundle %s...', chalk.magenta(file));
@@ -121,8 +122,10 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
           .pipe(source(file))
           .pipe(buffer())
           .on('end', function() {
-            if (!options.watch) bundle.close();
-            else if (watchMsg) {
+            if (!options.watch) {
+              bundle.close();
+              return cb();
+            } else if (watchMsg) {
               log(watchMsg);
               watchMsg = false;
             }
