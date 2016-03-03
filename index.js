@@ -98,11 +98,13 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
      * @return {undefined}
      */
     bundle.on('log', function(msg) {
-      log(format('%s Bundled %s %s',
-        chalk.green('✓'),
-        chalk.magenta(file),
-        chalk.gray(msg)
-      ));
+      if (options.watch && !watchMsg) {
+        log(format('%s Bundled %s %s',
+          chalk.green('✓'),
+          chalk.magenta(file),
+          chalk.gray(msg)
+        ));
+      }
     });
 
     /**
