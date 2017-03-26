@@ -31,6 +31,7 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
   options = merge.recursive({
     watch: process.env.NODE_ENV === 'development',
     cwd: process.cwd(),
+    onError: function(err){},
     browserify: {
       insertGlobals: false,
       cache: {},
@@ -119,6 +120,7 @@ function gulpWatchifyBrowserify(globPattern, options, streamHandler, done) {
               chalk.magenta(file),
               chalk.gray('(' + String(err) + ')')
             )));
+            options.onError.call(this, err);
             this.emit('end');
           })
           .pipe(source(file))
